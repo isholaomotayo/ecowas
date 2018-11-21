@@ -79,11 +79,55 @@
       -webkit-transition: all 0.3s;
     }
 
+
+
     #switch.hover #toggle {
       left: 50px;
     }
 
     #switch.hover {
+      -webkit-filter: none;
+      border: 4px solid #00cc64;
+      opacity: 1
+    }
+
+
+
+
+    #switch1 {
+      width: 90px;
+      padding: 5px;
+      border: 4px solid #2196F3;
+      box-sizing: border-box;
+      opacity: 1.0;
+      /*  -webkit-filter: grayscale(100%);
+    */
+      -webkit-transition: all 03s;
+      transition: all 0.3s;
+      border-radius: 540px;
+      cursor: pointer;
+
+    }
+
+    #toggle1 {
+
+      width: 20px;
+      height: 20px;
+      background: #2196F3;
+      border-radius: 100%;
+      position: relative;
+      transition: all 0.3s;
+      left: 0;
+      -webkit-transition: all 0.3s;
+    }
+
+
+
+    #switch1.hover #toggle1 {
+      left: 50px;
+    }
+
+    #switch1.hover {
       -webkit-filter: none;
       border: 4px solid #00cc64;
       opacity: 1
@@ -97,13 +141,31 @@
       <p>Switch languages</p>
 
       <div>
-        <span class="big">🇫🇷French</span> <span class="button--with-count">
+        <span class="big">🇫🇷French</span>
+
+        <span class="button--with-count">
                   <div id="switch" class="hover"
                   onclick="french()">
 <div id="toggle">
 </div>
 </div>
 </span><span class="big"> 🇬🇧English</span>
+
+
+<br />
+
+<span class="big">🇵🇹 Portugese</span>
+
+<span class="button--with-count">
+          <div id="switch1" class="hover"
+          onclick="portugese()">
+<div id="toggle1">
+</div>
+</div>
+</span><span class="big"> 🇬🇧English</span>
+
+
+
       </div>
     </header>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/soundmanager2/2.97a.20150601/script/soundmanager2-jsmin.js"></script>
@@ -127,12 +189,18 @@
         soundManager.togglePause("aSound");
         player.muted = !player.muted;
       }
+
+      function portugese() {
+        document.getElementById('switch1').classList.toggle('hover');
+        soundManager.togglePause("aSound");
+        player.muted = !player.muted;
+      }
     </script>
     <main>
       <img src="https://upload.wikimedia.org/wikipedia/en/8/8e/ECOWAS_Flag.png" width="120" />
       <div id="container">
         <div class="plyr__video-embed" id="player">
-          <iframe src="https://www.youtube.com/embed/z2gzQUlklA0?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1" allowfullscreen allowtransparency allow="autoplay"></iframe>
+          <iframe src="https://www.youtube.com/embed/4M7EGsDgnk8?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1" allowfullscreen allowtransparency allow="autoplay"></iframe>
         </div>
       </div>
 
