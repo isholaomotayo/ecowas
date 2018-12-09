@@ -173,8 +173,22 @@
       soundManager.setup({
         url: '/path/to/swf-files/',
         onready: function() {
-          var mySound = soundManager.createSound({
-            id: 'aSound',
+          var french = soundManager.createSound({
+            id: 'french',
+            url: 'https://french.ecowasparliament.ml:8443/ecowas'
+          });
+          //mySound.play();
+        },
+        ontimeout: function() {
+          // Hrmm, SM2 could not start. Missing SWF? Flash blocked? Show an error, etc.?
+        }
+      });
+
+      soundManager.setup({
+        url: '/path/to/swf-files/',
+        onready: function() {
+          var portugese = soundManager.createSound({
+            id: 'portugese',
             url: 'https://french.ecowasparliament.ml:8443/ecowas'
           });
           //mySound.play();
@@ -186,13 +200,13 @@
 
       function french() {
         document.getElementById('switch').classList.toggle('hover');
-        soundManager.togglePause("aSound");
+        soundManager.togglePause("french");
         player.muted = !player.muted;
       }
 
       function portugese() {
         document.getElementById('switch1').classList.toggle('hover');
-        soundManager.togglePause("aSound");
+        soundManager.togglePause("portugese");
         player.muted = !player.muted;
       }
     </script>
