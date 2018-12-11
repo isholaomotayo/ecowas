@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>ECOWAS Parliament Live stream channel</title>
+  <meta name="description" property="og:description" content="ECOWAS APrliament live stream channel">
+  <meta name="author" content="Omotayo Ishola">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Icons -->
+  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/en/8/8e/ECOWAS_Flag.png">
+  <link rel="icon" type="image/png" href="https://upload.wikimedia.org/wikipedia/en/8/8e/ECOWAS_Flag.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="https://upload.wikimedia.org/wikipedia/en/8/8e/ECOWAS_Flag.png" sizes="16x16">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://upload.wikimedia.org/wikipedia/en/8/8e/ECOWAS_Flag.png">
+
+  <!-- Opengraph
+  <meta property="og:title" content="Plyr - A simple, customizable HTML5 Video, Audio, YouTube and Vimeo player">
+  <meta property="og:site_name" content="Plyr">
+  <meta property="og:url" content="https://plyr.io">
+  <meta property="og:image" content="https://cdn.plyr.io/static/icons/1200x630.png">
+
+  <!-- Twitter -
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@sam_potts">
+  <meta name="twitter:creator" content="@sam_potts">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Docs styles -->
+  <link rel="stylesheet" href="../dist/demo.css?v=2">
+  <style>
+    input[type=text] {
+      border: 2px solid white;
+      border-radius: 4px;
+    }
+
+    .btn {
+      background-color: #4CAF50;
+      /* Green */
+      border: none;
+      color: white;
+      padding: 4px 4px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      -webkit-transition-duration: 0.4s;
+      /* Safari */
+      transition-duration: 0.4s;
+      cursor: pointer;
+      border-radius: 5px;
+      background-color: white;
+      color: black;
+      border: 2px solid #4CAF50;
+    }
+  </style>
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey: "AIzaSyB2syLSjwCJ5jtwhb0tMX-jD2cGM6pzMsk",
+      authDomain: "fir-test-a4776.firebaseapp.com",
+      projectId: "fir-test-a4776",
+    });
+
+    // Initialize Cloud Firestore through Firebase
+    var db = firebase.firestore();
+    // Disable deprecated features
+    db.settings({
+      timestampsInSnapshots: true
+    });
+
+
+    var docRef = db.collection("ecowas").doc("ecowas");
+    docRef.onSnapshot(function(doc) {
+      if (doc.exists) {
+        console.log("Document data:", doc.data().stream);
+        document.getElementById('streamLink').innerHTML = doc.data().stream
+      }
+    });
+
+    function update() {
+
+      streamUrl = document.getElementById('stream').value
+      db.collection("ecowas").doc("ecowas").set({
+          stream: streamUrl,
+
+        })
+        .then(function() {
+          alert("stream  successfully updated!");
+        })
+        .catch(function(error) {
+          alert("Error writing document: ", error);
+        });
+    }
+  </script>
+</head>
+
+<body>
+
+
+
+  <div class="grid">
+    <header>
+      <h2>Ecowas Parliament Live stream</h2>
+
+
+      <p>Update stream link</p>
+      <div id="streamLink">sdfdsfs</div>
+
+    </header>
+
+    <main>
+      <img src="logo.png" width="120" />
+      <div id="container">
+        <div class="plyr__video-embed" id="player">
+
+          <input class="" id="stream" type="text" name="link" value="">
+
+          <button onclick="update()" type="button" class="btn" name="button">Update</button>
+        </div>
+      </div>
+
+
+    </main>
+  </div>
+
+  <aside>
+
+  </aside>
+
+
+  <!-- Polyfills -->
+  <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,Array.prototype.includes,CustomEvent,Object.entries,Object.values,URL" crossorigin="anonymous"></script>
+
+  <!-- Plyr core script -->
+
+
+
+</body>
+
+</html>
