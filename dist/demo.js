@@ -4094,8 +4094,8 @@ typeof navigator === "object" && (function () {
 	(function () {
 	  var host = window.location.host;
 	  var env = {
-	    prod: host === 'plyr.io',
-	    dev: host === 'dev.plyr.io'
+	    prod: host === 'ecowasparliament.ml',
+	    dev: host === 'ecowasparliament.test'
 	  };
 	  document.addEventListener('DOMContentLoaded', function () {
 	    singleton.context(function () {
@@ -4139,29 +4139,29 @@ typeof navigator === "object" && (function () {
 	        }, 10);
 	      }); // Setup the player
 
-	      var player = new Plyr(selector, {
-	        debug: true,
-	        title: 'View From A Blue Moon',
-	        iconUrl: '../dist/plyr.svg',
-	        keyboard: {
-	          global: true
-	        },
-	        tooltips: {
-	          controls: true
-	        },
-	        captions: {
-	          active: true
-	        },
-	        keys: {
-	          google: 'AIzaSyDrNwtN3nLH_8rjCmu5Wq3ZCm4MNAVdc0c'
-	        },
-	        ads: {
-	          enabled: env.prod || env.dev,
-	          publisherId: '918848828995742'
-	        }
-	      }); // Expose for tinkering in the console
-
-	      window.player = player; // Setup type toggle
+	      // var player = new Plyr(selector, {
+	      //   debug: false,
+	      //   title: 'View From A Blue Moon',
+	      //   iconUrl: '../dist/plyr.svg',
+	      //   keyboard: {
+	      //     global: true
+	      //   },
+	      //   tooltips: {
+	      //     controls: true
+	      //   },
+	      //   captions: {
+	      //     active: true
+	      //   },
+	      //   keys: {
+	      //     google: 'AIzaSyDrNwtN3nLH_8rjCmu5Wq3ZCm4MNAVdc0c'
+	      //   },
+	      //   ads: {
+	      //     enabled: env.prod || env.dev,
+	      //     publisherId: '918848828995742'
+	      //   }
+	      // }); // Expose for tinkering in the console
+				//
+	      // window.player = player; // Setup type toggle
 
 	      var buttons = document.querySelectorAll('[data-source]');
 	      var types = {
@@ -4344,8 +4344,8 @@ typeof navigator === "object" && (function () {
 	      m.parentNode.insertBefore(a, m);
 	    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-	    window.ga('create', 'UA-40881672-11', 'auto');
-	    window.ga('send', 'pageview');
+	    // window.ga('create', 'UA-40881672-11', 'auto');
+	    // window.ga('send', 'pageview');
 	  }
 	  /* eslint-enable */
 
