@@ -171,7 +171,10 @@ db.settings({
 
       let player
       let update=false
-      player = new Plyr(document.getElementById('player'));
+      player = new Plyr(document.getElementById('player'),{});
+
+
+
       var docRef = db.collection("ecowas").doc("ecowas");
       docRef.onSnapshot(function(doc) {
           if (doc.exists) {
@@ -190,6 +193,11 @@ if (update !==false) {
   document.getElementsByClassName('plyr__video-embed')[pLength].firstElementChild.src=streamUrl
 
   player = new Plyr(document.getElementById('player'));
+  player.on('ready', event => {
+    const instance = event.detail.plyr;
+    instance.play();
+});
+
 }
 update=true
 
