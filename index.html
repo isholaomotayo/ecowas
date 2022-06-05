@@ -1,20 +1,57 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>ECOWAS Parliament Live stream channel</title>
+    <meta
+      name="description"
+      property="og:description"
+      content="ECOWAS APrliament live stream channel"
+    />
+    <meta name="author" content="Omotayo Ishola" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<head>
-  <meta charset="utf-8" />
-  <title>ECOWAS Parliament Live stream channel</title>
-  <meta name="description" property="og:description" content="ECOWAS APrliament live stream channel">
-  <meta name="author" content="Omotayo Ishola">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Icons -->
+    <link
+      rel="icon"
+      href="https://upload.wikimedia.org/wikipedia/en/8/8e/ECOWAS_Flag.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://upload.wikimedia.org/wikipedia/en/8/8e/ECOWAS_Flag.png"
+      sizes="32x32"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://upload.wikimedia.org/wikipedia/en/8/8e/ECOWAS_Flag.png"
+      sizes="16x16"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="https://upload.wikimedia.org/wikipedia/en/8/8e/ECOWAS_Flag.png"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.4.6/tailwind.min.css"
+    />
 
-  <!-- Icons -->
-  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/en/8/8e/ECOWAS_Flag.png">
-  <link rel="icon" type="image/png" href="https://upload.wikimedia.org/wikipedia/en/8/8e/ECOWAS_Flag.png" sizes="32x32">
-  <link rel="icon" type="image/png" href="https://upload.wikimedia.org/wikipedia/en/8/8e/ECOWAS_Flag.png" sizes="16x16">
-  <link rel="apple-touch-icon" sizes="180x180" href="https://upload.wikimedia.org/wikipedia/en/8/8e/ECOWAS_Flag.png">
+    <style>
+      .filter-switch label {
+        cursor: pointer;
+      }
+      .filter-switch-item input:checked + label {
+        color: inherit;
+      }
+      .filter-switch-item input:not(:checked) + label {
+        --bg-opacity: 0;
+        box-shadow: none;
+      }
+    </style>
 
-  <!-- Opengraph
+    <!-- Opengraph
   <meta property="og:title" content="Plyr - A simple, customizable HTML5 Video, Audio, YouTube and Vimeo player">
   <meta property="og:site_name" content="Plyr">
   <meta property="og:url" content="https://plyr.io">
@@ -27,289 +64,357 @@
   <meta name="twitter:card" content="summary_large_image">
 
   <!-- Docs styles -->
-  <link rel="stylesheet" href="dist/demo.css?v=2">
+    <link rel="stylesheet" href="dist/demo.css?v=2" />
 
-  <!-- Preload -->
-  <link rel="preload" as="font" crossorigin type="font/woff2" href="https://cdn.plyr.io/static/fonts/gordita-medium.woff2">
-  <link rel="preload" as="font" crossorigin type="font/woff2" href="https://cdn.plyr.io/static/fonts/gordita-bold.woff2">
+    <!-- Preload -->
+    <link
+      rel="preload"
+      as="font"
+      crossorigin
+      type="font/woff2"
+      href="https://cdn.plyr.io/static/fonts/gordita-medium.woff2"
+    />
+    <link
+      rel="preload"
+      as="font"
+      crossorigin
+      type="font/woff2"
+      href="https://cdn.plyr.io/static/fonts/gordita-bold.woff2"
+    />
 
-
-  <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-firestore.js"></script>
-  <script>
-
-firebase.initializeApp({
-  apiKey: "AIzaSyB2syLSjwCJ5jtwhb0tMX-jD2cGM6pzMsk",
-  authDomain: "fir-test-a4776.firebaseapp.com",
-  projectId: "fir-test-a4776",
-});
-
-// Initialize Cloud Firestore through Firebase
-var db = firebase.firestore();
-// Disable deprecated features
-db.settings({
-  timestampsInSnapshots: true
-});
-  </script>
-</head>
-
-<body>
-
-
-
-  <div class="grid">
-    <header>
-      <h2>Ecowas Parliament Live stream</h2>
-
-
-      <p>Switch languages</p>
-
-      <div>
-        <span class="big">🇫🇷French</span>
-
-        <span class="button--with-count">
-                  <div id="switch" class="hover"
-                  onclick="french()">
-<div id="toggle">
-</div>
-</div>
-</span><span class="big"> 🇬🇧English</span>
-
-
-<br />
-
-<span class="big">🇵🇹 Portugese</span>
-
-<span class="button--with-count">
-          <div id="switch1" class="hover"
-          onclick="portugese()">
-<div id="toggle1">
-</div>
-</div>
-</span><span class="big"> 🇬🇧English</span>
-
-
-
-      </div>
-    </header>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/soundmanager2/2.97a.20150601/script/soundmanager2-jsmin.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-firestore.js"></script>
     <script>
-      soundManager.setup({
-        url: '/path/to/swf-files/',
-        debugMode: false,
-        onready: function() {
-          var french = soundManager.createSound({
-            id: 'french',
-            url: 'https://sound.ecowasparliament.ml:8443/french'
-          });
-          //mySound.play();
-        },
-        ontimeout: function() {
-          // Hrmm, SM2 could not start. Missing SWF? Flash blocked? Show an error, etc.?
-        }
+      firebase.initializeApp({
+        apiKey: "AIzaSyB2syLSjwCJ5jtwhb0tMX-jD2cGM6pzMsk",
+        authDomain: "fir-test-a4776.firebaseapp.com",
+        projectId: "fir-test-a4776",
       });
 
-      soundManager.setup({
-        url: '/path/to/swf-files/',
-        debugMode: false,
-        onready: function() {
-          var portugese = soundManager.createSound({
-            id: 'portugese',
-            url: 'https://sound.ecowasparliament.ml:8443/portugese'
-          });
-          //mySound.play();
-        },
-        ontimeout: function() {
-          // Hrmm, SM2 could not start. Missing SWF? Flash blocked? Show an error, etc.?
-        }
+      // Initialize Cloud Firestore through Firebase
+      var db = firebase.firestore();
+      // Disable deprecated features
+      db.settings({
+        timestampsInSnapshots: true,
       });
-
-      function french() {
-        document.getElementById('switch').classList.toggle('hover');
-        soundManager.togglePause("french");
-        player.muted = !player.muted;
-      }
-
-      function portugese() {
-        document.getElementById('switch1').classList.toggle('hover');
-        soundManager.togglePause("portugese");
-        player.muted = !player.muted;
-      }
     </script>
-    <main>
-      <img src="logo.png" width="120" />
-      <div id="container">
-        <div class="plyr__video-embed" id="player">
-          <iframe id="streamFrame" src="https://www.youtube.com/embed/X-p5Jnfd-_o?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1" allowfullscreen allowtransparency allow="autoplay"></iframe>
+  </head>
+
+  <body>
+    <div class="grid">
+      <header>
+        <h2>ECOWAS Parliament Live stream</h2>
+
+        <p>Switch languages</p>
+        <div class="flex flex-col items-center py-4">
+          <ul
+            id="filter1"
+            class="filter-switch inline-flex items-center relative h-10 p-1 space-x-1 bg-gray-200 rounded-md font-semibold text-blue-600 my-4"
+          >
+            <li class="filter-switch-item flex relative h-8 bg-gray-300x">
+              <input
+                type="radio"
+                name="filter1"
+                id="filter1-0"
+                class="sr-only"
+                checked
+              />
+              <label
+                for="filter1-0"
+                class="h-8 py-1 px-2 text-sm leading-6 text-gray-600 hover:text-gray-800 bg-white rounded shadow"
+              >
+                English
+              </label>
+              <div aria-hidden="true" class="filter-active"></div>
+            </li>
+            <li class="filter-switch-item flex relative h-8 bg-gray-300x">
+              <input
+                type="radio"
+                name="filter1"
+                id="filter1-1"
+                class="sr-only"
+              />
+              <label
+                for="filter1-1"
+                class="h-8 py-1 px-2 text-sm leading-6 text-gray-600 hover:text-gray-800 bg-white rounded shadow"
+              >
+                Hausa
+              </label>
+            </li>
+            <li class="filter-switch-item flex relative h-8 bg-gray-300x">
+              <input
+                type="radio"
+                name="filter1"
+                id="filter1-2"
+                class="sr-only"
+              />
+              <label
+                for="filter1-2"
+                class="h-8 py-1 px-2 text-sm leading-6 text-gray-600 hover:text-gray-800 bg-white rounded shadow"
+              >
+                Yoruba
+              </label>
+            </li>
+            <li class="filter-switch-item flex relative h-8 bg-gray-300x">
+              <input
+                type="radio"
+                name="filter1"
+                id="filter1-3"
+                class="sr-only"
+              />
+              <label
+                for="filter1-3"
+                class="h-8 py-1 px-2 text-sm leading-6 text-gray-600 hover:text-gray-800 bg-white rounded shadow"
+              >
+                Igbo
+              </label>
+            </li>
+          </ul>
         </div>
-      </div>
+        <!-- <div>
+          <span class="big">🇫🇷French</span>
 
+          <span class="button--with-count">
+            <div id="switch" class="hover" onclick="french()">
+              <div id="toggle"></div>
+            </div> </span
+          ><span class="big"> 🇬🇧English</span>
 
-    </main>
-  </div>
+          <br />
 
-  <aside>
+          <span class="big">🇵🇹 Portugese</span>
 
-  </aside>
+          <span class="button--with-count">
+            <div id="switch1" class="hover" onclick="portugese()">
+              <div id="toggle1"></div>
+            </div> </span
+          ><span class="big"> 🇬🇧English</span>
+        </div> -->
+      </header>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/soundmanager2/2.97a.20150601/script/soundmanager2-jsmin.js"></script>
+      <script>
+        soundManager.setup({
+          url: "/path/to/swf-files/",
+          debugMode: false,
+          onready: function () {
+            var french = soundManager.createSound({
+              id: "french",
+              url: "https://sound.ecowasparliament.ml:8443/french",
+            });
+            //mySound.play();
+          },
+          ontimeout: function () {
+            // Hrmm, SM2 could not start. Missing SWF? Flash blocked? Show an error, etc.?
+          },
+        });
 
+        soundManager.setup({
+          url: "/path/to/swf-files/",
+          debugMode: false,
+          onready: function () {
+            var portugese = soundManager.createSound({
+              id: "portugese",
+              url: "https://sound.ecowasparliament.ml:8443/portugese",
+            });
+            //mySound.play();
+          },
+          ontimeout: function () {
+            // Hrmm, SM2 could not start. Missing SWF? Flash blocked? Show an error, etc.?
+          },
+        });
 
-  <!-- Polyfills -->
-  <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,Array.prototype.includes,CustomEvent,Object.entries,Object.values,URL" crossorigin="anonymous"></script>
+        function french() {
+          document.getElementById("switch").classList.toggle("hover");
+          soundManager.togglePause("french");
+          player.muted = !player.muted;
+        }
 
-  <!-- Plyr core script -->
-  <script src="dist/plyr.js" crossorigin="anonymous"></script>
+        function portugese() {
+          document.getElementById("switch1").classList.toggle("hover");
+          soundManager.togglePause("portugese");
+          player.muted = !player.muted;
+        }
+      </script>
+      <main>
+        <img src="logo.png" width="120" />
+        <div id="container">
+          <div class="plyr__video-embed" id="player">
+            <iframe
+              id="streamFrame"
+              src="https://www.youtube.com/embed/X-p5Jnfd-_o?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1"
+              allowfullscreen
+              allowtransparency
+              allow="autoplay"
+            ></iframe>
+          </div>
+        </div>
+      </main>
+    </div>
 
-  <!-- Sharing libary (https://shr.one) -->
-  <script src="https://cdn.shr.one/1.0.1/shr.js" crossorigin="anonymous"></script>
+    <aside></aside>
 
-  <!-- Rangetouch to fix <input type="range"> on touch devices (see https://rangetouch.com) -->
-  <script src="https://cdn.rangetouch.com/1.0.1/rangetouch.js" async crossorigin="anonymous"></script>
-  <script src="dist/demo.js" crossorigin="anonymous"></script>
+    <!-- Polyfills -->
+    <script
+      src="https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,Array.prototype.includes,CustomEvent,Object.entries,Object.values,URL"
+      crossorigin="anonymous"
+    ></script>
 
-  <script>
-  //
+    <!-- Plyr core script -->
+    <script src="dist/plyr.js" crossorigin="anonymous"></script>
 
-      let player
-      let update=false
-      player = new Plyr(document.getElementById('player'),{});
+    <!-- Sharing libary (https://shr.one) -->
+    <script
+      src="https://cdn.shr.one/1.0.1/shr.js"
+      crossorigin="anonymous"
+    ></script>
 
+    <!-- Rangetouch to fix <input type="range"> on touch devices (see https://rangetouch.com) -->
+    <script
+      src="https://cdn.rangetouch.com/1.0.1/rangetouch.js"
+      async
+      crossorigin="anonymous"
+    ></script>
+    <script src="dist/demo.js" crossorigin="anonymous"></script>
 
+    <script>
+      //
+
+      let player;
+      let update = false;
+      player = new Plyr(document.getElementById("player"), {});
 
       var docRef = db.collection("ecowas").doc("ecowas");
-      docRef.onSnapshot(function(doc) {
-          if (doc.exists) {
-              console.log("Document data:", doc.data().stream);
-              pLength=document.getElementsByClassName('plyr__video-embed').length-1
-              streamUrl="https://www.youtube.com/embed/"+ doc.data().stream +"?origin=https://ecowasparliament.ml&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1"
-              document.getElementsByClassName('plyr__video-embed')[pLength].firstElementChild.src=streamUrl
+      docRef.onSnapshot(function (doc) {
+        if (doc.exists) {
+          console.log("Document data:", doc.data().stream);
+          pLength =
+            document.getElementsByClassName("plyr__video-embed").length - 1;
+          streamUrl =
+            "https://www.youtube.com/embed/" +
+            doc.data().stream +
+            "?origin=https://ecowasparliament.ml&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1";
+          document.getElementsByClassName("plyr__video-embed")[
+            pLength
+          ].firstElementChild.src = streamUrl;
 
+          if (update !== false) {
+            player.destroy();
+            pLength =
+              document.getElementsByClassName("plyr__video-embed").length - 1;
+            streamUrl =
+              "https://www.youtube.com/embed/" +
+              doc.data().stream +
+              "?origin=https://ecowasparliament.ml&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1";
+            document.getElementsByClassName("plyr__video-embed")[
+              pLength
+            ].firstElementChild.src = streamUrl;
 
-
-if (update !==false) {
-
-  player.destroy()
-  pLength=document.getElementsByClassName('plyr__video-embed').length-1
-  streamUrl="https://www.youtube.com/embed/"+ doc.data().stream +"?origin=https://ecowasparliament.ml&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1"
-  document.getElementsByClassName('plyr__video-embed')[pLength].firstElementChild.src=streamUrl
-
-  player = new Plyr(document.getElementById('player'));
-  player.on('ready', event => {
-    const instance = event.detail.plyr;
-    instance.play();
-});
-
-}
-update=true
-
-          } else {
-              // doc.data() will be undefined in this case
-              console.log("No such document!");
+            player = new Plyr(document.getElementById("player"));
+            player.on("ready", (event) => {
+              const instance = event.detail.plyr;
+              instance.play();
+            });
           }
-      })
+          update = true;
+        } else {
+          // doc.data() will be undefined in this case
+          console.log("No such document!");
+        }
+      });
       // .catch(function(error) {
       //     console.log("Error getting document:", error);
       // });
+    </script>
 
-  </script>
+    <style>
+      .big {
+        font-size: 1em;
+      }
 
-  <style>
-    .big {
-      font-size: 1em
-    }
+      .grid {
+        background: none;
+      }
 
-    .grid {
-      background: none
-    }
+      body {
+        background: linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0.5)
+          ),
+          url("bg.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
 
-
-
-    body {
-      background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('bg.jpg');
-      background-size: cover;
-      background-repeat: no-repeat;
-    }
-
-    #switch {
-      width: 90px;
-      padding: 5px;
-      border: 4px solid #2196F3;
-      box-sizing: border-box;
-      opacity: 1.0;
-      /*  -webkit-filter: grayscale(100%);
+      #switch {
+        width: 90px;
+        padding: 5px;
+        border: 4px solid #2196f3;
+        box-sizing: border-box;
+        opacity: 1;
+        /*  -webkit-filter: grayscale(100%);
     */
-      -webkit-transition: all 03s;
-      transition: all 0.3s;
-      border-radius: 540px;
-      cursor: pointer;
+        -webkit-transition: all 03s;
+        transition: all 0.3s;
+        border-radius: 540px;
+        cursor: pointer;
+      }
 
-    }
+      #toggle {
+        width: 20px;
+        height: 20px;
+        background: #2196f3;
+        border-radius: 100%;
+        position: relative;
+        transition: all 0.3s;
+        left: 0;
+        -webkit-transition: all 0.3s;
+      }
 
-    #toggle {
+      #switch.hover #toggle {
+        left: 50px;
+      }
 
-      width: 20px;
-      height: 20px;
-      background: #2196F3;
-      border-radius: 100%;
-      position: relative;
-      transition: all 0.3s;
-      left: 0;
-      -webkit-transition: all 0.3s;
-    }
+      #switch.hover {
+        -webkit-filter: none;
+        border: 4px solid #00cc64;
+        opacity: 1;
+      }
 
-
-
-    #switch.hover #toggle {
-      left: 50px;
-    }
-
-    #switch.hover {
-      -webkit-filter: none;
-      border: 4px solid #00cc64;
-      opacity: 1
-    }
-
-
-
-
-    #switch1 {
-      width: 90px;
-      padding: 5px;
-      border: 4px solid #2196F3;
-      box-sizing: border-box;
-      opacity: 1.0;
-      /*  -webkit-filter: grayscale(100%);
+      #switch1 {
+        width: 90px;
+        padding: 5px;
+        border: 4px solid #2196f3;
+        box-sizing: border-box;
+        opacity: 1;
+        /*  -webkit-filter: grayscale(100%);
     */
-      -webkit-transition: all 03s;
-      transition: all 0.3s;
-      border-radius: 540px;
-      cursor: pointer;
+        -webkit-transition: all 03s;
+        transition: all 0.3s;
+        border-radius: 540px;
+        cursor: pointer;
+      }
 
-    }
+      #toggle1 {
+        width: 20px;
+        height: 20px;
+        background: #2196f3;
+        border-radius: 100%;
+        position: relative;
+        transition: all 0.3s;
+        left: 0;
+        -webkit-transition: all 0.3s;
+      }
 
-    #toggle1 {
+      #switch1.hover #toggle1 {
+        left: 50px;
+      }
 
-      width: 20px;
-      height: 20px;
-      background: #2196F3;
-      border-radius: 100%;
-      position: relative;
-      transition: all 0.3s;
-      left: 0;
-      -webkit-transition: all 0.3s;
-    }
-
-
-
-    #switch1.hover #toggle1 {
-      left: 50px;
-    }
-
-    #switch1.hover {
-      -webkit-filter: none;
-      border: 4px solid #00cc64;
-      opacity: 1
-    }
-  </style>
-</body>
-
+      #switch1.hover {
+        -webkit-filter: none;
+        border: 4px solid #00cc64;
+        opacity: 1;
+      }
+    </style>
+  </body>
 </html>
