@@ -39,6 +39,13 @@
     />
 
     <style>
+      .logo {
+        margin: 0 auto;
+      }
+      .header-text {
+        text-align: center;
+        margin: 0 auto;
+      }
       .filter-switch label {
         cursor: pointer;
       }
@@ -101,93 +108,78 @@
   </head>
 
   <body>
-    <div class="grid">
-      <header>
-        <h2>ECOWAS Parliament Live stream</h2>
+    <header>
+      <img src="logo.png" width="120" class="logo" />
+      <h2 class="header-text">ECOWAS Parliament Live stream</h2>
 
+      <div class="flex flex-col items-center py-8">
         <p>Switch languages</p>
-        <div class="flex flex-col items-center py-4">
-          <ul
-            id="filter1"
-            class="filter-switch inline-flex items-center relative h-10 p-1 space-x-1 bg-gray-200 rounded-md font-semibold text-blue-600 my-4"
-          >
-            <li class="filter-switch-item flex relative h-8 bg-gray-300x">
-              <input
-                type="radio"
-                name="filter1"
-                id="filter1-0"
-                class="sr-only"
-                checked
-              />
-              <label
-                for="filter1-0"
-                class="h-8 py-1 px-2 text-sm leading-6 text-gray-600 hover:text-gray-800 bg-white rounded shadow"
-              >
-                English
-              </label>
-              <div aria-hidden="true" class="filter-active"></div>
-            </li>
-            <li class="filter-switch-item flex relative h-8 bg-gray-300x">
-              <input
-                type="radio"
-                name="filter1"
-                id="filter1-0"
-                class="sr-only"
-                checked
-              />
-              <label
-                for="filter1-0"
-                class="h-8 py-1 px-2 text-sm leading-6 text-gray-600 hover:text-gray-800 bg-white rounded shadow"
-              >
-                Pidgin
-              </label>
-              <div aria-hidden="true" class="filter-active"></div>
-            </li>
-            <li class="filter-switch-item flex relative h-8 bg-gray-300x">
-              <input
-                type="radio"
-                name="filter1"
-                id="filter1-1"
-                class="sr-only"
-              />
-              <label
-                for="filter1-1"
-                class="h-8 py-1 px-2 text-sm leading-6 text-gray-600 hover:text-gray-800 bg-white rounded shadow"
-              >
-                Hausa
-              </label>
-            </li>
-            <li class="filter-switch-item flex relative h-8 bg-gray-300x">
-              <input
-                type="radio"
-                name="filter1"
-                id="filter1-5"
-                class="sr-only"
-              />
-              <label
-                for="filter1-2"
-                class="h-8 py-1 px-2 text-sm leading-6 text-gray-600 hover:text-gray-800 bg-white rounded shadow"
-              >
-                Yoruba
-              </label>
-            </li>
-            <li class="filter-switch-item flex relative h-8 bg-gray-300x">
-              <input
-                type="radio"
-                name="filter1"
-                id="filter1-3"
-                class="sr-only"
-              />
-              <label
-                for="filter1-3"
-                class="h-8 py-1 px-2 text-sm leading-6 text-gray-600 hover:text-gray-800 bg-white rounded shadow"
-              >
-                Igbo
-              </label>
-            </li>
-          </ul>
-        </div>
-        <!-- <div>
+        <ul
+          id="filter1"
+          class="filter-switch inline-flex items-center relative h-10 p-1 space-x-1 bg-gray-200 rounded-md font-semibold text-blue-600 my-4"
+        >
+          <li class="filter-switch-item flex relative h-8 bg-gray-300x">
+            <input
+              type="radio"
+              name="filter1"
+              id="filter1-0"
+              class="sr-only"
+              checked
+            />
+            <label
+              for="filter1-0"
+              class="h-8 py-1 px-2 text-sm leading-6 text-gray-600 hover:text-gray-800 bg-white rounded shadow"
+            >
+              English
+            </label>
+            <div aria-hidden="true" class="filter-active"></div>
+          </li>
+          <li class="filter-switch-item flex relative h-8 bg-gray-300x">
+            <input
+              type="radio"
+              name="filter1"
+              id="filter1-0"
+              class="sr-only"
+              checked
+            />
+            <label
+              for="filter1-0"
+              class="h-8 py-1 px-2 text-sm leading-6 text-gray-600 hover:text-gray-800 bg-white rounded shadow"
+            >
+              Pidgin
+            </label>
+            <div aria-hidden="true" class="filter-active"></div>
+          </li>
+          <li class="filter-switch-item flex relative h-8 bg-gray-300x">
+            <input type="radio" name="filter1" id="filter1-1" class="sr-only" />
+            <label
+              for="filter1-1"
+              class="h-8 py-1 px-2 text-sm leading-6 text-gray-600 hover:text-gray-800 bg-white rounded shadow"
+            >
+              Hausa
+            </label>
+          </li>
+          <li class="filter-switch-item flex relative h-8 bg-gray-300x">
+            <input type="radio" name="filter1" id="filter1-5" class="sr-only" />
+            <label
+              for="filter1-2"
+              class="h-8 py-1 px-2 text-sm leading-6 text-gray-600 hover:text-gray-800 bg-white rounded shadow"
+            >
+              Yoruba
+            </label>
+          </li>
+          <li class="filter-switch-item flex relative h-8 bg-gray-300x">
+            <input type="radio" name="filter1" id="filter1-3" class="sr-only" />
+            <label
+              for="filter1-3"
+              class="h-8 py-1 px-2 text-sm leading-6 text-gray-600 hover:text-gray-800 bg-white rounded shadow"
+            >
+              Igbo
+            </label>
+          </li>
+        </ul>
+      </div>
+      <!-- <div>
           <span class="big">🇫🇷French</span>
 
           <span class="button--with-count">
@@ -206,7 +198,8 @@
             </div> </span
           ><span class="big"> 🇬🇧English</span>
         </div> -->
-      </header>
+    </header>
+    <div class="grid">
       <script src="https://cdnjs.cloudflare.com/ajax/libs/soundmanager2/2.97a.20150601/script/soundmanager2-jsmin.js"></script>
       <script>
         soundManager.setup({
@@ -251,8 +244,7 @@
           player.muted = !player.muted;
         }
       </script>
-      <main>
-        <img src="logo.png" width="120" />
+      <div>
         <div id="container">
           <div class="plyr__video-embed" id="player">
             <iframe
@@ -264,7 +256,7 @@
             ></iframe>
           </div>
         </div>
-      </main>
+      </div>
     </div>
 
     <aside></aside>
@@ -348,6 +340,7 @@
       }
 
       .grid {
+        width: 100%;
         background: none;
       }
 
@@ -369,7 +362,7 @@
         box-sizing: border-box;
         opacity: 1;
         /*  -webkit-filter: grayscale(100%);
-    */
+      */
         -webkit-transition: all 03s;
         transition: all 0.3s;
         border-radius: 540px;
@@ -404,7 +397,7 @@
         box-sizing: border-box;
         opacity: 1;
         /*  -webkit-filter: grayscale(100%);
-    */
+      */
         -webkit-transition: all 03s;
         transition: all 0.3s;
         border-radius: 540px;
